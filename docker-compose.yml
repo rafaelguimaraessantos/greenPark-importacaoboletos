@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:5.5
+    restart: always
+    container_name: greenpark-mysql
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: green_park
+      MYSQL_USER: green_user
+      MYSQL_PASSWORD: green_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: greenpark-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /mnt/c/Users/rafae/OneDrive/Documentos/pdfBoletos:/usr/src/app/src/pdfs
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_USER: green_user
+      DB_PASSWORD: green_pass
+      DB_NAME: green_park
+      PORT: 3000

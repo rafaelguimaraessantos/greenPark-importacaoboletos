@@ -1,0 +1,56 @@
+# node_modules (NUNCA versionar isso)
+node_modules/
+
+# arquivos de log
+*.log
+
+# arquivos do sistema/Windows/macOS
+*.Zone.Identifier
+.DS_Store
+Thumbs.db
+
+# arquivos temporários e backups
+*.tmp
+*.bak
+*.swp
+
+# arquivos de ambiente
+.env
+.env.*.local
+
+# arquivos do Postman
+*.postman_collection.json
+
+# PDFs e arquivos gerados em tempo de execução
+src/pdfs/
+src/boletos_individuais/
+
+# pasta de banco de dados do Docker
+data/
+data/*
+
+# pasta de testes (se não quiser versionar)
+# pastaarquivostestenode/
+
+# lockfiles do sistema operacional
+*.pid
+
+# coverage (caso use testes)
+coverage/
+
+# ignore pastas específicas que geram dados binários do mysql
+data/mysql/
+data/mysql/*
+
+# outras pastas de banco geradas
+**/*.MYD
+**/*.MYI
+**/*.frm
+**/*.CSM
+**/*.CSV
+
+# ignorar configurações de IDEs/editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
