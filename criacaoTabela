@@ -1,0 +1,20 @@
+SELECT * FROM green_park.boletos;CREATE TABLE `lotes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) DEFAULT NULL,
+  `ativo` tinyint(1) DEFAULT NULL,
+  `criado_em` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `boletos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_sacado` varchar(255) DEFAULT NULL,
+  `id_lote` int(11) NOT NULL,
+  `valor` decimal(10,2) DEFAULT NULL,
+  `linha_digitavel` varchar(255) DEFAULT NULL,
+  `ativo` tinyint(1) DEFAULT NULL,
+  `criado_em` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_lote` (`id_lote`),
+  CONSTRAINT `boletos_ibfk_1` FOREIGN KEY (`id_lote`) REFERENCES `lotes` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
